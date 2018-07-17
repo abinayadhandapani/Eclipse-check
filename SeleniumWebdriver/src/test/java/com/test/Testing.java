@@ -21,7 +21,7 @@ public class Testing {
 		
 		Assert.assertEquals(title, "Sign in to GitHub · GitHub");
 		
-		System.out.println("Success - Output Verifie");
+		System.out.println("Success - Output Verifi");
 	}
 	}
 
