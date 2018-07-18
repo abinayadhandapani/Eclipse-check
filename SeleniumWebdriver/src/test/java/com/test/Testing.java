@@ -3,15 +3,31 @@ package com.test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Testing {
+	@Parameters("browser")
 	@Test
-	public void testLogin()
+	public void testLogin(String value)
 	{
+		WebDriver driver=null;
+		if(value.equals("chrome"))
+		{
 		System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
-		WebDriver driver=new ChromeDriver();
+		driver=new ChromeDriver();
+		}
+		else if(value.equals("firefox"))
+		{
+			System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe");
+			driver=new FirefoxDriver();
+		}
+		else
+		{
+			System.out.println("No Driver found");
+		}
 		driver.get("https://github.com/login");
 		driver.findElement(By.id("login_field")).sendKeys("abinaya");
 		driver.findElement(By.id("password")).sendKeys("Testing1234");
